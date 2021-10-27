@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+
+	<insert id="insert">
+		INSERT INTO BOOK(BOOK_ID, TITLE, CATEGORY, PRICE, INSERT_DATE)
+		VALUES ( 
+		
+		(SELECT NVL(MAX(BOOK_ID),0)+1 FROM BOOK), #{title},#{category},#{price},SYSDATE)
+	</insert>
+
+</mapper>

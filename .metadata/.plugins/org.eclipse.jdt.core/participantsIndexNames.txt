@@ -39,6 +39,8 @@ C:\workspace\6.JspSpring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\8
 \rara\src
 C:\workspace\6.JspSpring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\653068058.index
 \JspServlet\src
+C:\workspace\6.JspSpring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4218733110.index
+\springProj\src\main\java
 C:\workspace\6.JspSpring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\578068506.index
 \JspServlet\src
 C:\workspace\6.JspSpring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\165010218.index

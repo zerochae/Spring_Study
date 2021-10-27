@@ -33,8 +33,22 @@
 	</logger>
 
 	<!-- Root Logger -->
+	
+	<!-- 
+	
+	기본 출력 설정
+	Appender : 전달된 로그를 어디에 출력할지 결정(콘솔, 파일 기록, DB 저장 등)
+	priority : 로그 레벨
+	FATAL : 심각한 에로 발생 
+	EROOR : 요청 처리중 문제 발생
+	WARN : 프로그램 실행에는 문제가 없지만 오류 발생 경고
+	INFO : 상태변경 등의 정보성 메시지
+	DEBUG : 개발시 디버깅 용도
+	TRACE : 상세한 이벤트 용도
+	
+	 -->
 	<root>
-		<priority value="warn" />
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 	

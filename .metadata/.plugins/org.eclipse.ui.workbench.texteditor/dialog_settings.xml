@@ -8,6 +8,8 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="myba"/>
+			<item value="junit"/>
 			<item value="real"/>
 			<item value="value="/>
 			<item value="cart"/>
@@ -21,8 +23,6 @@
 			<item value="delete"/>
 			<item value="de"/>
 			<item value="init"/>
-			<item value="name"/>
-			<item value="test"/>
 		</list>
 		<list key="replacehistory">
 			<item value="\\"/>

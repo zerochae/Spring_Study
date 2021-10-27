@@ -1,0 +1,23 @@
+package kr.or.ddit.service.impl;
+
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.dao.BookDao;
+
+/*
+ 
+  	스프링한테 이 클래스는 서비스클래스라고 알려줌
+  	스프링 MVC 구조에서 Controller와 DAO를 연결하는 역할
+ 
+ */
+@Service
+public class BookServiceImpl {
+
+	BookDao bookDao;
+	
+	public int insert(Map<String,Object> map) {
+		return this.bookDao.insert(map);
+	}
+}
