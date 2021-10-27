@@ -1,0 +1,25 @@
+package kr.or.ddit.guestbook.vo;
+
+public class Product {
+	
+	public Product() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	private String prodId;
+	private String prodNm;
+	private Date regDt;
+	private int regrNo;
+	private String pId;
+	private String pName;
+	private int pUnitprice;
+	private String pDescription;
+	private String pCategory;
+	private String pManufacturer;
+	private int pUnitsinstock;
+	private String pCondition;
+	private String pFilename;
+	
+	
+
+}

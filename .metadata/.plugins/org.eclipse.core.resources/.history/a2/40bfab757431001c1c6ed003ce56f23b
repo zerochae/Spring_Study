@@ -1,0 +1,11 @@
+package jdbc;
+
+public class JdbcUtil {
+
+	public static void close(Object obj) {
+		
+		if()
+		
+	}
+	
+}

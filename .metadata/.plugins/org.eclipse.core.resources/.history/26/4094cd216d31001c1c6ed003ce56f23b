@@ -1,0 +1,13 @@
+package jdbc;
+
+import java.sql.Connection;
+
+public class ConnectionProvider {
+	
+	public static Connection getConneciton() throw SQLException{
+		return null;
+	}
+
+	
+	
+}

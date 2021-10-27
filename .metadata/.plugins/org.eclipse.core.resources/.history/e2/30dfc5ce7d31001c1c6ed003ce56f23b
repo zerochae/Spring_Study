@@ -1,0 +1,12 @@
+package kr.or.ddit.guestbook.service;
+
+public class GetMessageListService {
+	
+	private static GetMessageListService instance;
+	public static GetMessageListService getInstance() {
+		if(instance == null) instance = new GetMessageListService();
+		return instance;
+	}
+	private GetMessageListService() {}
+
+}

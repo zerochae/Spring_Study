@@ -1,0 +1,11 @@
+package jdbc;
+
+public class ConnectionProvider {
+	
+	public static Connection getConneciton() {
+		return null;
+	}
+
+	
+	
+}

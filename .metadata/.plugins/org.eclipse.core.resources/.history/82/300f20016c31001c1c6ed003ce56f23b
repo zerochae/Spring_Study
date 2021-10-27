@@ -1,0 +1,18 @@
+package kr.or.ddit.guestbook.service;
+
+public class WriteMessageService {
+
+	private static WriteMessageService instance = new WriteMessageService();
+	
+	public static WriteMessageService getInstance() {
+	}
+	
+	private WriteMessageService() {
+		
+	}
+
+	private String write(String message) {
+
+		return null;
+	}
+}
