@@ -1,5 +1,6 @@
 package kr.or.ddit.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -45,4 +46,23 @@ public class BookDao {
 		return sqlSessionTemplate.selectOne("book.select",map);
 	}
 	
+	public boolean update(Map<String,Object> map){
+		
+		return this.sqlSessionTemplate.update("book.update",map) > 0;
+	}
+	
+	public boolean delete(Map<String,Object> map) {
+		
+		//RDBMS(Relational DatabaseManagement System)에서
+		//delete 구문은 update 구문처럼 조건에 일치하는
+		// 모든 행을 삭제하므로 영향을 받은 행의 수는 0 혹은 1이상이 됨
+		return this.sqlSessionTemplate.delete("book.delete",map) > 0;
+	}
+	
+	public List<Map<String,Object>> list(){
+		return this.sqlSessionTemplate.selectList("book.list");
+	}
+	
+	
+ 	
 }

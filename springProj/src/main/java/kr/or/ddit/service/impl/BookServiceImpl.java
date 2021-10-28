@@ -1,5 +1,6 @@
 package kr.or.ddit.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,20 @@ public class BookServiceImpl implements BookService {
 	// 책 상세보기
 	@Override
 	public Map<String , Object> select(Map<String,Object> map){
+		System.out.println("test1");
 		return this.bookDao.select(map);
+	}
+	
+	public boolean update(Map<String,Object> map){
+		
+		return this.bookDao.update(map);
+	}
+	
+	public boolean delete (Map<String,Object> map) {
+		return this.bookDao.delete(map);
+	}
+	 
+	public List<Map<String,Object>> list(){
+		return this.bookDao.list();
 	}
 }

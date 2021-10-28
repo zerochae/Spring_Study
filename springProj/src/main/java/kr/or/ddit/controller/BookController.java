@@ -1,15 +1,17 @@
 package kr.or.ddit.controller;
 
+import java.util.List;
 import java.util.Map;
 
-
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
 import kr.or.ddit.service.BookService;
 
 
@@ -33,6 +35,11 @@ public class BookController {
 	//인터페이스가 사용됨
 	@Autowired
 	BookService bookService;
+	
+	
+	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
+	
+	
 	// 책을 등록할 때 요청
 	// value 속성 : 웹브라우저에서 요청한 주소 (URI)
 	@RequestMapping(value = "/create",method=RequestMethod.GET)
@@ -107,7 +114,72 @@ public class BookController {
 		
 	}
 	
+	// 책 수정 화면 메소드
+	// map : {bookId = 1}
+	// 책 수정 화면 = 책 입력 화면(jsp) + 책 상세 화면(서비스)
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	public ModelAndView update(@RequestParam Map<String,Object> map) {
+		ModelAndView mav = new ModelAndView();
+		 
+		Map<String,Object> detailMap = this.bookService.select(map);
+		
+		mav.addObject("data",detailMap);
+		mav.setViewName("book/update");
+		
+		return mav;
+	}
 	
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public ModelAndView updatePost(@RequestParam Map<String,Object> map,ModelAndView mav) {
+		
+		boolean isUpdateSuccess = this.bookService.update(map);
+		
+		System.out.println("update"+ map);
+		
+		/*
+		 	책 수정 화면에서 책 수정 기능으로 보내주는 파라미터는 총 4개
+		 	1) /update?bookId = 1
+		 	2) form 태그를 통해 전달되는 title, category, price
+		 */
+		
+		if(isUpdateSuccess) { //성공
+			// 상세페이지로 이동
+			mav.setViewName("redirect:/detail?bookId=" + map.get("bookId").toString());
+		} else { //실패
+			// BookController의 update 메소드를 호출
+			//방법1)
+			mav = this.update(map);
+		}
+		return mav;
+	}
+	
+	// map : {bookId = 1}
+	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	public ModelAndView deletePost(@RequestParam Map<String,Object> map, ModelAndView mav) {
+		
+		boolean isDeleteSuccess = this.bookService.delete(map);
+		
+		if(isDeleteSuccess) {
+			mav.setViewName("redirect:/list");
+		} else {
+			mav.setViewName("redirect:/detail?=book"+map.get("bookId").toString());
+		}
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="list",method=RequestMethod.GET)
+	public ModelAndView list(@RequestParam Map<String,Object> map,ModelAndView mav) {
+		List<Map<String,Object>> list = this.bookService.list();
+		//forwarding
+		logger.info("list :" + list.get(0).toString());
+		
+		mav.addObject("data",list);
+		
+		mav.setViewName("book/list");
+		
+		return mav;
+	}
 }
 
 

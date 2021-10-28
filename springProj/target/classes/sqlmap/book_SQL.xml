@@ -26,4 +26,25 @@
 		WHERE BOOK_ID = #{bookId} 
 	</select>	
 	
+	<!-- 책 수정하기 udpate태그는 UPDATE 쿼리를 실행하기 위한 마이바티스 태그 -->
+	<update id="update" parameterType="hashMap">
+		UPDATE BOOK
+		SET TITLE=#{title},CATEGORy=#{category},PRICE=#{price}
+		WHERE BOOK_ID = #{bookId}
+	</update>
+	
+	<!-- 책 삭제! -->
+	<delete id="delete" parameterType="hashMap"> 
+	
+		DELETE FROM BOOK
+		WHERE BOOK_ID = #{bookId}
+	
+	</delete>
+	
+	<select id="list" resultType="hashMap">
+		SELECT BOOK_ID,TITLE,CATEGORY,PRICE,INSERT_DATE
+		FROM BOOK
+		ORDER BY INSERT_DATE DESC
+	</select>
+	
 </mapper>
