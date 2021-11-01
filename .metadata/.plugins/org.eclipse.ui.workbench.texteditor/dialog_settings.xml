@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="}"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="myba"/>
-			<item value="junit"/>
-			<item value="real"/>
-			<item value="value="/>
-			<item value="cart"/>
-			<item value="\"/>
-			<item value="list.js"/>
-			<item value="gName"/>
-			<item value="msgnobox"/>
-			<item value="submit"/>
-			<item value="insert"/>
-			<item value="2"/>
-			<item value="delete"/>
-			<item value="de"/>
-			<item value="init"/>
+			<item value="&quot;)%&gt;"/>
+			<item value="${data"/>
+			<item value="&lt;%=rs.getString(&quot;"/>
+			<item value="&quot;) %&gt;"/>
+			<item value="${data&quot;"/>
+			<item value="${data("/>
+			<item value="&lt;%= rs.getString"/>
+			<item value="%&gt;"/>
+			<item value="&lt;%="/>
+			<item value="img"/>
+			<item value="commons"/>
+			<item value="jackson"/>
+			<item value="jack"/>
+			<item value="lombok"/>
+			<item value="lom"/>
 		</list>
 		<list key="replacehistory">
+			<item value="}"/>
+			<item value="${data."/>
+			<item value="${data"/>
+			<item value=" "/>
 			<item value="\\"/>
 			<item value="3"/>
-			<item value=" "/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1219"/>
+		<item key="DIALOG_X_ORIGIN" value="1195"/>
 		<item key="DIALOG_Y_ORIGIN" value="269"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

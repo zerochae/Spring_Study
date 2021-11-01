@@ -4,10 +4,23 @@
 <html>
 <head>
 <title>책 목록</title>
+<script type="text/javascript">
+	function fn_create() {
+		location.href = "/create";
+	}
+</script>
 </head>
 <body>
 
 	<h1>책 목록</h1>
+
+	<form>
+		<!-- form 태그의 기본 HTTP 메소드는 get임 . action을 생략하면 현재 uri을 요청 -->
+		<p>
+			<input type="text" name="keyword" value="${keyword}" /> 
+			<input type="submit" value="검색" />
+		</p>
+	</form>
 
 	<table border="1">
 		<thead>
@@ -27,6 +40,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
+	<input type="button" onclick="fn_create()" value="저장">
 </body>
 </html>

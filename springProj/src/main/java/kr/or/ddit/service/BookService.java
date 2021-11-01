@@ -14,6 +14,7 @@ public interface BookService {
 	boolean delete(Map<String, Object> map);
 
 	
-	public List<Map<String, Object>> list();
+	public List<Map<String, Object>> list(Map<String,Object> map);
+
 
 }

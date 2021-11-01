@@ -59,8 +59,8 @@ public class BookDao {
 		return this.sqlSessionTemplate.delete("book.delete",map) > 0;
 	}
 	
-	public List<Map<String,Object>> list(){
-		return this.sqlSessionTemplate.selectList("book.list");
+	public List<Map<String,Object>> list(Map<String,Object> map){
+		return this.sqlSessionTemplate.selectList("book.list",map);
 	}
 	
 	

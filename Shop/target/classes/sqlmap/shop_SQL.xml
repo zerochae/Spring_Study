@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop">
+	<select id="list" resultType="hashMap">
+		SELECT * FROM PRODUCT
+	</select>
+	
+	<select id="detail" resultType="hashMap" parameterType="hashMap">
+		SELECT * FROM PRODUCT WHERE P_ID = #{P_ID}
+	</select>
+	
+	<update id="update" parameterType="hashMap">
+	
+		UPDATE PRODUCT
+		SET 	P_NAME = #{P_NAME}, 
+				P_UNITPRICE = #{P_UNITPRICE}, 
+				P_DESCRIPTION = #{P_DESCRIPTION}, 
+				P_CATEGORY = #{P_CATEGORY}, 
+				P_MANUFACTURER = #{P_MANUFACTURER},
+				P_UNITSINSTOCK = #{P_UNITSINSTOCK},
+				P_CONDITION = #{P_CONDITION},
+				P_FILENAME = #{P_FILENAME}
+		WHERE P_ID = #{P_ID}
+	
+	</update>
+</mapper>

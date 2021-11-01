@@ -6,4 +6,7 @@
   <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost(springProj)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost(springProj)" name="Tomcat v8.5 Server at localhost(springProj)" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="7">
     <list key="modules" value0="springProj::org.eclipse.jst.jee.server:springProj::jst.web::3.1"/>
   </server>
+  <server auto-publish-setting="2" auto-publish-time="1" configuration-id="/Servers/Tomcat v8.5 Server at localhost(Shop)-config" deployDir="wtpwebapps" hostname="localhost" id="Tomcat v8.5 Server at localhost(Shop)" name="Tomcat v8.5 Server at localhost(Shop)" runtime-id="Apache Tomcat v8.5" server-type="org.eclipse.jst.server.tomcat.85" server-type-id="org.eclipse.jst.server.tomcat.85" start-timeout="45" stop-timeout="15" testEnvironment="true" timestamp="2">
+    <list key="modules" value0="Shop::org.eclipse.jst.jee.server:Shop::jst.web::3.1"/>
+  </server>
 </servers>

@@ -168,9 +168,10 @@ public class BookController {
 		return mav;
 	}
 	
+	//map : {keyword = 중대장}
 	@RequestMapping(value="list",method=RequestMethod.GET)
 	public ModelAndView list(@RequestParam Map<String,Object> map,ModelAndView mav) {
-		List<Map<String,Object>> list = this.bookService.list();
+		List<Map<String,Object>> list = this.bookService.list(map);
 		//forwarding
 		logger.info("list :" + list.get(0).toString());
 		

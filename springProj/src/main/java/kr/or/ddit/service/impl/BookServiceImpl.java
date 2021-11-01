@@ -48,8 +48,8 @@ public class BookServiceImpl implements BookService {
 	public boolean delete (Map<String,Object> map) {
 		return this.bookDao.delete(map);
 	}
-	 
-	public List<Map<String,Object>> list(){
-		return this.bookDao.list();
+	  
+	public List<Map<String,Object>> list(Map<String,Object> map){
+		return this.bookDao.list(map);
 	}
 }
