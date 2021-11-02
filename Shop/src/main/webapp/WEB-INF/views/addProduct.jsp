@@ -31,69 +31,69 @@ fmt:setBundle => 특정 메세지 번들을 사용할 수 있도록 코딩함
 			<div class="text-right">
 				<a href="?language=ko">Korean</a>&nbsp; <a href="?language=en">English</a>
 			</div>
-			<form name="newProduct" action="processAddProduct.jsp"
+			<form name="newProduct" action="/insert"
 				class="form-horizontal" method="post" enctype="multipart/form-data">
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="productId"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="productId" id="productId"
+						<input type="text" name="P_ID" id="productId"
 							class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="pname"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="name" id="name" class="form-control">
+						<input type="text" name="P_NAME" id="name" class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="unitPrice"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="unitPrice" id="unitPrice"
+						<input type="text" name="P_UNITPRICE" id="unitPrice"
 							class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="description"></fmt:message></label>
 					<div class="col-sm-3">
-						<textarea name="description" cols="50" rows="2"
+						<textarea name="P_DESCRIPTION" cols="50" rows="2"
 							class="form-control"></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="manufacturer"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="manufacturer" class="form-control">
+						<input type="text" name="P_MANUFACTURER" class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="category"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="category" class="form-control">
+						<input type="text" name="P_CATEGORY" class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="unitsInStock"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="text" name="unitsInStock" id="unitsInStock"
+						<input type="text" name="P_UNITSINSTOCK" id="unitsInStock"
 							class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="condition"></fmt:message></label>
 					<div class="col-sm-3">
-						<input type="radio" name="condition" value="New">
+						<input type="radio" name="P_CONDITION" value="New">
 						<fmt:message key="condition_New"></fmt:message>
-						<input type="radio" name="condition" value="Old">
+						<input type="radio" name="P_CONDITION" value="Old">
 						<fmt:message key="condition_Old"></fmt:message>
-						<input type="radio" name="condition" value="Refurbished">
+						<input type="radio" name="P_CONDITION" value="Refurbished">
 						<fmt:message key="condition_Refurbished"></fmt:message>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="productImage"></fmt:message></label>
 					<div class="col-sm-5">
-						<input type="file" name="productImage" class="form-control">
+						<input type="file" name="P_PRODUCTIMAGE" class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">

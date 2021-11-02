@@ -19,7 +19,7 @@
 			
 					<c:forEach var="row" items="${data}">
 					<div class="col-md-4">
-					<img alt="" src="/images/" style=" width:100%; height: 240px">
+					<img alt="" src="/resources/images/${row.P_FILENAME}" style=" width:100%; height: 240px">
 					<h3>${row.P_NAME} </h3>
 					<p>${row.P_P_DESCRIPTION}</p>
 					<p> ₩ ${row.P_UNITPRICE}</p>

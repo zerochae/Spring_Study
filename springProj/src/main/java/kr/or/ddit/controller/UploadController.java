@@ -63,14 +63,32 @@ public class UploadController {
 	@PostMapping("/uploadAjaxAction")
 	public void uploadAjaxPost(MultipartFile[] uploadFile) {
 		logger.info("update ajax post..........");
-		
+
 		String uploadFolder = "C:\\workspace\\6.JspSpring\\springProj\\src\\main\\webapp\\resources\\upload";
-		
-		for(MultipartFile multipartFile : uploadFile) {
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			logger.info("---------------------");
+			logger.info("파일명  : " + multipartFile.getOriginalFilename());
+			logger.info("파일크기  : " + multipartFile.getSize());
+
+			String uploadFileName = multipartFile.getOriginalFilename();
 			
-		logger.info("---------------------");
-		logger.info("파일명  : " + multipartFile.getOriginalFilename());
-		logger.info("파일크기  : " + multipartFile.getSize());
+			//IE에서의 파일명의 경로를 처리
+			
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\")+1);
+			logger.info("IE에서 처리한 파일명");
+			logger.info(uploadFileName);
+			
+			// 1) 목적지? 2) 파일명?
+
+			File saveFile = new File(uploadFolder, uploadFileName);
+
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch (Exception e) {
+				logger.error(e.getLocalizedMessage());
+			}
 		}
 	}
 }

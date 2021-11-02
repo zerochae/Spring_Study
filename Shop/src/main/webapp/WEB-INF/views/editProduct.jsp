@@ -8,7 +8,7 @@
 
 	function deleteConfirm(id){
 		if(confirm("해당 상품을 삭제합니다") == true){
-			location.href = "/deleteProduct?id="+id;
+			location.href = "/delete?id="+id;
 		} else {
 			return;
 		}
@@ -37,7 +37,7 @@
 		
 			<c:forEach var="row" items="${data}">
 			<div class="col-md-4">
-				<img alt="" src="/images/${row.P_FILENAME}" style=" width:100%; height: 240px">
+				<img alt="" src="/resources/images/${row.P_FILENAME}" style=" width:100%; height: 240px">
 				<h3> ${row.P_NAME} </h3>
 				<p> ${row.P_DESCRIPTION} </p>
 				<p> ₩  ${row.P_UNITPRICE} </p>

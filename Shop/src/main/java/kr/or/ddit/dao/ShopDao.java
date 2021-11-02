@@ -21,4 +21,22 @@ public class ShopDao {
 		return this.sqlSessionTemplate.selectOne("shop.detail",map);
 	}
 	
+	public boolean insert(Map<String,Object> map) {
+		
+		return this.sqlSessionTemplate.insert("shop.insert",map) > 0;
+	}
+	
+	public boolean delete(Map<String,Object> map) {
+		
+		return this.sqlSessionTemplate.delete("shop.delete",map) > 0;
+	}
+	
+	public boolean update(Map<String,Object> map) {
+		return this.sqlSessionTemplate.update("shop.update",map) > 0;
+	}
+	
+	public boolean update2(Map<String,Object> map) {
+		return this.sqlSessionTemplate.update("shop.update",map) > 0;
+	}
+	
 }

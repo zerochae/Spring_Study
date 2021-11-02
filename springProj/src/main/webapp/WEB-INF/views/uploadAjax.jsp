@@ -8,6 +8,26 @@
 <title>아작스를 통한 이미지 업로드</title>
 <script type="text/javascript">
 $(function(){
+	
+	var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+	var maxSize = 5242880; // 5Mb
+	
+	// 파일명과 파일크기를 체크하는 함수
+	function checkExtension(fileName, fileSize){
+		// 파일 크기 체크
+		if(fileSize >= maxSize){
+			alert("파일 사이즈 초과");
+			return false;
+		}
+		//파일명 체크
+		if(regex.test(fileName)){
+			alert("해당 종류의 파일읍 업로드 할 수 없습니다.")
+			return false;
+		}
+		
+		return true;
+	}
+	
 	$('#uploadBtn').on("click",function(e){
 		//jQuery를 이용하여 파일 업로드를 하기위해
 		//formData  객체(가상의 form 태그) 이용.

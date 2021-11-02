@@ -23,8 +23,31 @@ public class ShopServiceImpl implements ShopSerivce{
 
 	@Override
 	public Map<String, Object> detail(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return this.shopDao.detail(map);
 	}
+
+	@Override
+	public boolean insert(Map<String, Object> map) {
+		return this.shopDao.insert(map);
+	}
+
+	@Override
+	public boolean delete(Map<String, Object> map) {
+		return this.shopDao.delete(map);
+	}
+
+
+	@Override
+	public boolean update(Map<String, Object> map) {
+		return this.shopDao.update(map);
+	}
+
+
+	@Override
+	public boolean update2(Map<String, Object> map) {
+		return this.shopDao.update(map);
+	}
+
+
 
 }

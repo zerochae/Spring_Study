@@ -33,12 +33,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5">
-					<img alt="" src="/images/${data.P_FIlENAME}>" style="width:100%"/>
+					<img alt="" src="/resources/images/${data.P_FIlENAME}" style="width:100%"/>
 				</div>
 			
 			<div class="col-md-6">
-				<h3>${data.P_NAME}></h3>
-				<p>${data.P_DESCRIPTION}></p>
+				<h3>${data.P_NAME}</h3>
+				<p>${data.P_DESCRIPTION}</p>
 				<p><b>상품 코드  </b> <span class="badge badge-danger">${data.P_ID}</span></p>
 				<p><b>제조사  </b> ${data.P_MANUFACTURER} </p>
 				<p><b>분류  </b> ${data.P_CATEGORY} </p>

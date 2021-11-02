@@ -6,16 +6,42 @@
 <title>체크박스 요소</title>
 ﻿<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-	$(function() {
+		let count = 1;
+	
+		$(function() {
+		
 		//id = "btnAdd" 인 div 요소의 마지막 요소로써 복사한 데이터를  추가
+		
+// 		<p class="zero">
+// 		카드1 - 번호 <input type="text" name="cardList[0].no" value="123456">
+// 		카드1 - 유효기간 <input type="text" name="cardList[0].validMonth"
+// 			value="25/10">
+// 	</p>
+
+
 		$("#btnAdd").on("click", function() {
-			var varClone = $('.zero').last().clone();
-			$('#divCard').append(varClone);
+			
+			if(count > 0){
+				
+			count++;
+			
+			console.log(count);
+			
+			let html = "<p class='card'> 카드 "+count+" - 번호 <input type='text' name='cardList["+count+"].no' value='123456'> "
+					 + "카드 "+count+" - 유효기간 <input type='text' name='cardList["+count+"].validMonth' value='25/10'> </p>"
+			
+			$('#divCard').append(html);
+			}
 		});
 		
 		$('#btnDel').on("click",function(){
+			if(count > 1){
+				
+			$('.card').last().remove();
 			
-			$('.zero').last().remove();
+			count--;
+			console.log(count);
+			}
 			
 		});
 		
@@ -64,17 +90,17 @@
 			<input type="button" id="btnDel" value="-">
 		<div id="divCard">
 			<p>
-				카드1 - 번호 <input type="text" name="cardList[0].no" value="123456">
-				카드1 - 유효기간 <input type="text" name="cardList[0].validMonth"
+				카드 1 - 번호 <input type="text" name="cardList[0].no" value="123456">
+				카드 1 - 유효기간 <input type="text" name="cardList[0].validMonth"
 					value="25/10">
 			</p>
 		</div>
 		<input type="submit" name="registerCheckbox02" />
 	</form>
 
-	<p class="zero">
-		카드1 - 번호 <input type="text" name="cardList[0].no" value="123456">
-		카드1 - 유효기간 <input type="text" name="cardList[0].validMonth"
+	<p class="zero" style="display:none">
+		카드 1 - 번호 <input type="text" name="cardList[0].no" value="123456">
+		카드 1 - 유효기간 <input type="text" name="cardList[0].validMonth"
 			value="25/10">
 	</p>
 
