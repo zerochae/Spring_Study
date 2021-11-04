@@ -1,9 +1,0 @@
-package kr.or.ddit.service;
-
-import java.util.Map;
-
-public interface BookService {
-	// 메소드 시그니처
-	int insert(Map<String, Object> map);
-
-}

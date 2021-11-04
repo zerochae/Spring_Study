@@ -97,7 +97,7 @@
 					<div class="form-group row">
 						<label class="col-sm-2"> 이미지 </label>
 						<div class="col-sm-5">
-							<input type="file" name="P_FILENAME" class="form-control">
+							<input type="file" name="P_FILENAME" id="P_FILENAME" class="form-control" value="${data.P_FILENAME}">
 						</div>
 					</div>
 					<div class="form-group row">

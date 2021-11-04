@@ -93,7 +93,7 @@ fmt:setBundle => 특정 메세지 번들을 사용할 수 있도록 코딩함
 				<div class="form-group row">
 					<label class="col-sm-2"><fmt:message key="productImage"></fmt:message></label>
 					<div class="col-sm-5">
-						<input type="file" name="P_PRODUCTIMAGE" class="form-control">
+						<input type="file" name="P_FILENAME" class="form-control">
 					</div>
 				</div>
 				<div class="form-group row">

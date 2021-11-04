@@ -2,5 +2,6 @@
 <modules>
   <module moduleId="org.eclipse.jst.jee.server:rara" serverId="Tomcat v8.5 Server at localhost"/>
   <module moduleId="org.eclipse.jst.jee.server:springProj" serverId="Tomcat v8.5 Server at localhost"/>
+  <module moduleId="org.eclipse.jst.jee.server:Shop" serverId="Tomcat v8.5 Server at localhost(Shop)"/>
   <module moduleId="org.eclipse.jst.jee.server:JspServlet" serverId="Tomcat v8.5 Server at localhost"/>
 </modules>

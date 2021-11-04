@@ -43,7 +43,7 @@
 				<p> ₩  ${row.P_UNITPRICE} </p>
 				<p>
 					<c:if test="${param.edit == 'update'}">
-					<a href="/updateProduct?id=${row.P_ID}" class="btn btn-success"
+					<a href="/updateProduct?P_ID=${row.P_ID}" class="btn btn-success"
 						role="button"> 수정 &raquo; </a>
 					</c:if>
 					<c:if test="${param.edit == 'delete'}">

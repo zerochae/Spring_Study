@@ -4,13 +4,18 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.vo.AddressVO;
+import kr.or.ddit.vo.BoardVO;
 import kr.or.ddit.vo.CardVO;
 import kr.or.ddit.vo.MemberVO;
 
@@ -25,6 +30,24 @@ public class BoardController {
 	 * 
 	 */
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	
+	@RequestMapping("/ajaxHome")
+	public String ajaxHome() {
+		return "ajaxHome";
+	}
+	
+	
+	//PUT을 쓰면 RequestBody에 JSON데이터가 담긴
+	//RequestBody 어노테이션을 통해 JSON 데이터를 VO객체에 자동으로 할당
+	@RequestMapping(value="/{boardNo}", method=RequestMethod.PUT)
+	public ResponseEntity<String> test1(@PathVariable int boardNo, @RequestBody BoardVO boardVo) {
+		logger.info("boardVo : " + boardVo.toString());
+		
+		// SUCCESS 라는 문자열을 반환
+		return new ResponseEntity<String>("SUCCESS",HttpStatus.OK);
+	}
+	
+	
 	// value 속성에 요청 경로를 설정
 //	@RequestMapping(value = "/register")
 	@RequestMapping("/register")

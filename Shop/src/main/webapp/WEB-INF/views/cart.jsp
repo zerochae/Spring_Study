@@ -1,15 +1,7 @@
-<%@page import="kr.or.ddit.guestbook.vo.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<%
-
-	String cartId = session.getId();
-	
-	
-
-%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <!DOCTYPE html>
@@ -32,10 +24,10 @@
 				<table width="100%">
 					<tr>
 						<td align="left">
-							<a href="./deleteCart.jsp?cartId=<%=cartId%>" class="btn btn-danger">삭제하기</a>
+							<a href="/deleteCart?cartId=${session_id}" class="btn btn-danger">삭제하기</a>
 						</td>
 						<td align="right">
-							<a href="./shippingInfo.jsp?cartId=<%=cartId%>" class="btn btn-success">주문하기</a>
+							<a href="/shippingInfo?cartId=${session_id}" class="btn btn-success">주문하기</a>
 						</td>
 					</tr>
 				</table>
@@ -49,55 +41,34 @@
 						<td>소계</td>
 						<td>비고</td>
 					</tr>
-					<%
-					
-					int sum = 0;
-					//장바구니인 cartlist에 등록된 모든 상ㅍ무을 가져옴
-					ArrayList<Product> cartList = (ArrayList<Product>)session.getAttribute("cartlist");
-					
-					if(cartList == null){
-						cartList = new ArrayList<Product>();
-					}
-					
-					for(int i =0; i<cartList.size(); i++){
-						Product product = cartList.get(i);
-						// 금액 = 상품의 가격 * 수량;
-						int total = product.getUnitPrice() * product.getQuantity();
-						sum += total;
-					
-					
-					%>
+					<c:forEach var="cart" items="${cart}" >
 					
 					<tr>
-						<td><%=product.getProductId()%> - <%=product.getPname()%></td>
-						<td><%=product.getUnitPrice()%></td>
-						<td><%=product.getQuantity() %></td>
-						<td><%=total%></td>
-						<td><a href="./removeCart.jsp?id=<%=product.getProductId()%>" class="badge badge-danger"> 삭제 </a></td>
+						<td>${cart.P_ID} - ${cart.P_NAME}</td>
+						<td><fmt:formatNumber value='${cart.P_UNITPRICE}' pattern="#,###" /></td>
+						<td>${cart.quantity}</td>
+					<c:set var="total" value="${cart.P_UNITPRICE * cart.quantity}"> </c:set>
+						<td><fmt:formatNumber value='${total}' pattern="#,###" /></td>
+					<c:set var = "sum" value="${sum + total}"></c:set>
+						<td><a href="/removeCart?P_ID=${cart.P_ID}" class="badge badge-danger"> 삭제 </a></td>
 					
 					</tr>
-					<%
-					}
-					%>
+					
+					</c:forEach>
 					
 					<tr>
 						<td></td>
 						<td></td>
 						<td>총액</td>
-						<td><%=sum %></td>
+						<td><fmt:formatNumber value='${sum}' pattern="#,###" /></td>
 						<td></td>
-					
 					</tr>
 				</table>
-				<a href="./products.jsp" class="btn btn-secondary">쇼핑계속하기&laquo;</a>
+				<a href="/products" class="btn btn-secondary">쇼핑계속하기&laquo;</a>
 			</div>
 			<hr>
 		</div>
 	</div>
-
-
 <jsp:include page="footer.jsp"/>
-
-
 </body>
 </html>
