@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shop">
+	<select id="list" resultType="hashMap" resultMap="productResultMap">
+		SELECT * FROM PRODUCT
+	</select>
+
+	<resultMap id="productResultMap" type="HashMap">
+		<result property="P_DESCRIPTION" column="P_DESCRIPTION" jdbcType="CLOB" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="detail" resultType="hashMap" parameterType="hashMap" resultMap="productResultMap">
+		SELECT *
+		FROM PRODUCT WHERE P_ID = #{P_ID}
+	</select>
+
+	<update id="update" parameterType="hashMap">
+
+		UPDATE PRODUCT
+		SET P_NAME = #{P_NAME},
+		P_UNITPRICE = #{P_UNITPRICE},
+		P_DESCRIPTION = #{P_DESCRIPTION},
+		P_CATEGORY = #{P_CATEGORY},
+		P_MANUFACTURER = #{P_MANUFACTURER},
+		P_UNITSINSTOCK = #{P_UNITSINSTOCK},
+		P_CONDITION = #{P_CONDITION},
+		P_FILENAME = #{P_FILENAME}
+		WHERE P_ID = #{P_ID}
+
+	</update>
+
+
+	<update id="update2" parameterType="hashMap">
+
+		UPDATE PRODUCT
+		SET P_NAME = #{P_NAME},
+		P_UNITPRICE = #{P_UNITPRICE},
+		P_DESCRIPTION = #{P_DESCRIPTION},
+		P_CATEGORY = #{P_CATEGORY},
+		P_MANUFACTURER = #{P_MANUFACTURER},
+		P_UNITSINSTOCK = #{P_UNITSINSTOCK},
+		P_CONDITION = #{P_CONDITION},
+		WHERE P_ID = #{P_ID}
+
+	</update>
+
+
+	<insert id="insert" parameterType="hashMap">
+
+		INSERT INTO PRODUCT(
+		P_ID,
+		P_UNITPRICE,
+		P_DESCRIPTION,
+		P_CATEGORY,
+		P_MANUFACTURER,
+		P_UNITSINSTOCK,
+		P_CONDITION,
+		P_FILENAME)
+		VALUES(
+		#{P_NAME},
+		#{P_UNITPRICE},
+		#{P_DESCRIPTION},
+		#{P_CATEGORY},
+		#{P_MANUFACTURER},
+		#{P_UNITSINSTOCK},
+		#{P_CONDITION},
+		#{P_FILENAME})
+
+	</insert>
+
+	<delete id="delete" parameterType="hashMap">
+
+		DELETE FROM PRODUCT
+		WHERE P_ID = #{P_ID}
+
+	</delete>
+
+</mapper>

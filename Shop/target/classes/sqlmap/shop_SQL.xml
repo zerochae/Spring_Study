@@ -15,7 +15,7 @@
 	</select>
 
 	<update id="update" parameterType="hashMap">
-
+ 
 		UPDATE PRODUCT
 		SET P_NAME = #{P_NAME},
 		P_UNITPRICE = #{P_UNITPRICE},

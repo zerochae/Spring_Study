@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.ddit.dao.ShopDao;
+import kr.or.ddit.mapper.ShopMapper;
 import kr.or.ddit.service.ShopSerivce;
 
 @Service
@@ -23,41 +24,49 @@ public class ShopServiceImpl implements ShopSerivce {
 
 	@Autowired
 	ShopDao shopDao;
-
+	
+	@Autowired
+	public ShopMapper shopMapper;
+ 
 	@Override
 	public List<Map<String, Object>> list() {
-		return this.shopDao.list();
+//		return this.shopDao.list();
+		return this.shopMapper.list();
 	}
 
 	@Override
 	public Map<String, Object> detail(Map<String, Object> map) {
-		return this.shopDao.detail(map);
+//		return this.shopDao.detail(map);
+		return this.shopMapper.detail(map); 
 	}
 
 	@Override
 	public boolean insert(Map<String, Object> map) {
-		return this.shopDao.insert(map);
+//		return this.shopDao.insert(map);
+		return this.shopMapper.insert(map); 
 	}
 
 	@Override
 	public boolean delete(Map<String, Object> map) {
-		return this.shopDao.delete(map);
+//		return this.shopDao.delete(map);
+		return this.shopMapper.delete(map);
 	}
 
 	@Override
 	public boolean update(Map<String, Object> map) {
-		return this.shopDao.update(map);
+//		return this.shopDao.update(map);
+		return this.shopMapper.update(map); 
 	}
 
 	@Override
 	public boolean update2(Map<String, Object> map) {
-		return this.shopDao.update(map);
+		return this.shopMapper.update2(map);
 	}
 
 	@Override
 	public List<Map<String, Object>> addCart(Map<String, Object> map, HttpSession session) {
 
-		Map<String, Object> item = this.shopDao.detail(map);
+		Map<String, Object> item = this.shopMapper.detail(map);
 		boolean flag = true;
 		String item_id = item.get("P_ID").toString();
 

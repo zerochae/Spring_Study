@@ -42,7 +42,7 @@ public class BookController {
 	
 	// 책을 등록할 때 요청
 	// value 속성 : 웹브라우저에서 요청한 주소 (URI)
-	@RequestMapping(value = "/create",method=RequestMethod.GET)
+	@RequestMapping(value = "book/create",method=RequestMethod.GET)
 	public ModelAndView create() {
 		/*
 		 
@@ -71,7 +71,7 @@ public class BookController {
 		
 	}
 	//title = 제목 & category = 카테고리 & price = 10000
-	@RequestMapping(value = "/create",method=RequestMethod.POST)
+	@RequestMapping(value = "book/create",method=RequestMethod.POST)
 	public ModelAndView createPost(@RequestParam Map<String,Object> map) {
 		
 		ModelAndView mav = new ModelAndView();
@@ -95,7 +95,7 @@ public class BookController {
 	// 파라미터 목록  : bookId = 1
 	// {"bookId" , "1"}
 	
-	@RequestMapping(value="/detail" , method = RequestMethod.GET)
+	@RequestMapping(value="book/detail" , method = RequestMethod.GET)
 	public ModelAndView select(@RequestParam Map<String,Object> map) {
 		Map<String,Object> detailMap = this.bookService.select(map);
 		
@@ -117,7 +117,7 @@ public class BookController {
 	// 책 수정 화면 메소드
 	// map : {bookId = 1}
 	// 책 수정 화면 = 책 입력 화면(jsp) + 책 상세 화면(서비스)
-	@RequestMapping(value="/update",method=RequestMethod.GET)
+	@RequestMapping(value="book/update",method=RequestMethod.GET)
 	public ModelAndView update(@RequestParam Map<String,Object> map) {
 		ModelAndView mav = new ModelAndView();
 		 
@@ -129,7 +129,7 @@ public class BookController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/update",method=RequestMethod.POST)
+	@RequestMapping(value="book/update",method=RequestMethod.POST)
 	public ModelAndView updatePost(@RequestParam Map<String,Object> map,ModelAndView mav) {
 		
 		boolean isUpdateSuccess = this.bookService.update(map);
@@ -141,7 +141,7 @@ public class BookController {
 		 	1) /update?bookId = 1
 		 	2) form 태그를 통해 전달되는 title, category, price
 		 */
-		
+		 
 		if(isUpdateSuccess) { //성공
 			// 상세페이지로 이동
 			mav.setViewName("redirect:/detail?bookId=" + map.get("bookId").toString());
@@ -154,7 +154,7 @@ public class BookController {
 	}
 	
 	// map : {bookId = 1}
-	@RequestMapping(value="/delete",method=RequestMethod.POST)
+	@RequestMapping(value="book/delete",method=RequestMethod.POST)
 	public ModelAndView deletePost(@RequestParam Map<String,Object> map, ModelAndView mav) {
 		
 		boolean isDeleteSuccess = this.bookService.delete(map);

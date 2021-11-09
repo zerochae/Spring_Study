@@ -39,7 +39,7 @@ public class HomeController {
 	@RequestMapping(value = "goHome0201", method = RequestMethod.GET)
 	public String home0201() {
 		logger.info("home0201");
-		return "goHome0201";
+		return "goHome0201"; 
 	}
 
 	@RequestMapping(value = "/sub/goHome0202", method = RequestMethod.GET)
@@ -126,7 +126,7 @@ public class HomeController {
 	@RequestMapping(value="/register01",method=RequestMethod.POST)
 	public String register01(String userId,int coin,String password, Model model) {
 		logger.info("register01");
-		
+		  
 		logger.info("userId" + userId);
 		logger.info("coin" + coin);
 		logger.info("password" + password);
@@ -140,5 +140,15 @@ public class HomeController {
 		model.addAttribute("map",map);
 		
 		return "member/register01";
+	}
+	
+	@RequestMapping("/tiles/body1")
+	public String titles1() {
+		// */* 및 {1}/{2}
+		return "test1/body1";
+	}
+	@RequestMapping("/tiles/body2")
+	public String titles2() {
+		return "test2/body2";
 	}
 }

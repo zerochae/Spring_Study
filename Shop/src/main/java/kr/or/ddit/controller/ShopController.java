@@ -106,6 +106,8 @@ public class ShopController {
 	}
 	
 	@GetMapping("/product")
+	
+	
 	public Model Product(@RequestParam Map<String, Object> map, Model model) {
 		
 

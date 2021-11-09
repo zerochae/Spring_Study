@@ -18,10 +18,10 @@ public class ShopDao {
 		return this.sqlSessionTemplate.selectList("shop.list");
 	}
 	
-	public Map<String,Object> detail(Map<String,Object> map){
-		return this.sqlSessionTemplate.selectOne("shop.detail",map);
-	}
-	
+//	public Map<String,Object> detail(Map<String,Object> map){
+//		return this.sqlSessionTemplate.selectOne("shop.detail",map);
+//	}
+	 
 	public boolean insert(Map<String,Object> map) {
 		
 		return this.sqlSessionTemplate.insert("shop.insert",map) > 0;
