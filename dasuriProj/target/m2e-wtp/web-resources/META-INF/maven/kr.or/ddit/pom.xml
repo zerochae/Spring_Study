@@ -232,6 +232,15 @@
 			<version>3.0.8</version>
 		</dependency>
 
+		<!-- 입력값을 검증하기 위한 라이브러리 스프링MVC는 Bean Validation 기능을 갖고 있고, 이를 이용하여 요청 파라미터 
+			값이 바인딩된 도메인 클래스의 입력값을 검증 -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.4.2.Final</version>
+		</dependency>
+
 
 
 		<!-- Database 라이브러리 끝 -->

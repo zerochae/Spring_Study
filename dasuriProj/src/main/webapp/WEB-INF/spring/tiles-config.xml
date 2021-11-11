@@ -16,12 +16,12 @@
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
 	</definition>
 	
-<!-- 	<definition name="" extends="tiles-layout"> -->
+	<definition name="*/*" extends="tiles-layout">
 <!-- 	name의  */*은 body의 value에서 1과 2에 해당  -->
 <!-- 		 controller에서 return 1에 해당하는 폴더 /2에 해당하는 jsp파일의 명을 설정함 -->
-<!-- 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/> -->
-<!-- 		<put-attribute name="title" value="tiles"/> -->
-<!-- 	</definition> -->
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+		<put-attribute name="title" value="tiles"/>
+	</definition>
 	
 	<definition name="*.tiles" extends="tiles-layout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp"/>

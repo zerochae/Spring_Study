@@ -2,4 +2,5 @@
 <aop-reference-model>
 <aop-project name="Shop"/>
 <aop-project name="springProj"/>
+<aop-project name="dasuriProj"/>
 </aop-reference-model>

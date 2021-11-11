@@ -1,5 +1,9 @@
-<footer id="footer" class="text-center my-5">
-<div>
-<p> copyright &copy; by Design art All Right Reserved </p>
-</div>
-</footer>
+<!-- Footer -->
+            <footer id="footer" class="container sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div> 
+            </footer>
+<!-- End of Footer -->
