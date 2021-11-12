@@ -19,4 +19,25 @@ public class EmpServiceImpl implements EmpService {
 	public List<EmpVO> list() throws Exception {
 		return this.empMapper.list();
 	}
+	
+	@Override
+	public int insert(EmpVO emp) throws Exception{
+		return this.empMapper.insert(emp);
+	}
+
+	@Override
+	public String createEmpNo() throws Exception {
+		return this.empMapper.createEmpNo();
+	}
+
+	@Override
+	public EmpVO detail(String empNo) throws Exception {
+		// TODO Auto-generated method stub
+		return this.empMapper.detail(empNo); 
+	}
+
+	@Override
+	public int update(String empNo) throws Exception {
+		return this.empMapper.update(empNo);
+	}
 }

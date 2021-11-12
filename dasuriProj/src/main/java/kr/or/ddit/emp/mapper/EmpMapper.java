@@ -8,4 +8,12 @@ public interface EmpMapper {
 	
 	List<EmpVO> list();
 	
+	int insert(EmpVO emp);
+	
+	String createEmpNo();
+	
+	EmpVO detail(String empNo); 
+	
+	int update(String empNo);
+	
 }

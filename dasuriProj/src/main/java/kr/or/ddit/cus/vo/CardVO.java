@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
-
+ 
 @Data
 public class CardVO {
 	//null 안됨, trim후 길이가 0보다 커야함

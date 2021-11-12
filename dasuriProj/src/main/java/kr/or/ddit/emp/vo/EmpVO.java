@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class EmpVO implements Serializable {
 	
 	@NotBlank
@@ -26,12 +26,7 @@ public class EmpVO implements Serializable {
 	
 	private String password;
 	
-	@Override
-	public String toString() {
-		return "EmpVO [empNo=" + empNo + ", addr=" + addr + ", hp=" + hp + ", nm=" + nm + ", postNo=" + postNo
-				+ ", addr2=" + addr2 + ", password=" + password + "]";
-	}
-	
+	private String fireYn; // 퇴직여부
 	
 	
 }

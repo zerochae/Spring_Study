@@ -277,13 +277,13 @@
                                             <th>이름</th>
                                             <th>연락처</th>
                                             <th>주소</th>
-                                        </tr>
+                                        </tr> 
                                     </tfoot>
                                     <tbody>
                                    <c:forEach var="row" items="${list}">
                                         <tr>
                                             <td>${row.empNo}</td>
-                                            <td>${row.nm}</td>
+                                            <td><a href="detail?empNo=${row.empNo}">${row.nm}</a></td>
                                             <td>${row.hp}</td>
                                             <td>${row.addr}</td>
                                         </tr>

@@ -1,79 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="kr.or.ddit.emp.mapper.EmpMapper">
-	<select id="list" resultType="empVo">
-		SELECT * FROM EMP
-		ORDER BY EMP_NO ASC
-	</select>
-
-	<resultMap id="productResultMap" type="HashMap">
-		<result property="P_DESCRIPTION" column="P_DESCRIPTION" jdbcType="CLOB" javaType="java.lang.String" />
-	</resultMap>
-
-	<select id="detail" resultType="hashMap" parameterType="hashMap" resultMap="productResultMap">
-		SELECT *
-		FROM PRODUCT WHERE P_ID = #{P_ID}
-	</select>
-
-	<update id="update" parameterType="hashMap">
- 
-		UPDATE PRODUCT
-		SET P_NAME = #{P_NAME},
-		P_UNITPRICE = #{P_UNITPRICE},
-		P_DESCRIPTION = #{P_DESCRIPTION},
-		P_CATEGORY = #{P_CATEGORY},
-		P_MANUFACTURER = #{P_MANUFACTURER},
-		P_UNITSINSTOCK = #{P_UNITSINSTOCK},
-		P_CONDITION = #{P_CONDITION},
-		P_FILENAME = #{P_FILENAME}
-		WHERE P_ID = #{P_ID}
-
-	</update>
-
-
-	<update id="update2" parameterType="hashMap">
-
-		UPDATE PRODUCT
-		SET P_NAME = #{P_NAME},
-		P_UNITPRICE = #{P_UNITPRICE},
-		P_DESCRIPTION = #{P_DESCRIPTION},
-		P_CATEGORY = #{P_CATEGORY},
-		P_MANUFACTURER = #{P_MANUFACTURER},
-		P_UNITSINSTOCK = #{P_UNITSINSTOCK},
-		P_CONDITION = #{P_CONDITION},
-		WHERE P_ID = #{P_ID}
-
-	</update>
-
-
-	<insert id="insert" parameterType="hashMap">
-
-		INSERT INTO PRODUCT(
-		P_ID,
-		P_UNITPRICE,
-		P_DESCRIPTION,
-		P_CATEGORY,
-		P_MANUFACTURER,
-		P_UNITSINSTOCK,
-		P_CONDITION,
-		P_FILENAME)
-		VALUES(
-		#{P_NAME},
-		#{P_UNITPRICE},
-		#{P_DESCRIPTION},
-		#{P_CATEGORY},
-		#{P_MANUFACTURER},
-		#{P_UNITSINSTOCK},
-		#{P_CONDITION},
-		#{P_FILENAME})
-
-	</insert>
-
-	<delete id="delete" parameterType="hashMap">
-
-		DELETE FROM PRODUCT
-		WHERE P_ID = #{P_ID}
-
-	</delete>
-
+   <resultMap type="hashMap" id="resultMap1">
+      <result column="P_DESCRIPTION" property="P_DESCRIPTION" 
+         jdbcType="CLOB" javaType="java.lang.String" /> 
+   </resultMap>
+   
+   <!-- 상품 목록 -->
+   <select id="list" resultType="empVo">
+      <![CDATA[
+      SELECT * FROM EMP
+      ]]>
+      ORDER BY EMP_NO ASC
+   </select>
+   
+   <!-- 다음 상품 코드 생성 -->
+   <select id="getPid" resultType="String">
+      SELECT SUBSTR(MAX(P_ID),1,1) || TRIM(SUBSTR(MAX(P_ID),2)+1) PID
+      FROM PRODUCT
+   </select>
+   
+   <!-- 직원 등록    -->
+   <insert id="insert" parameterType="empVo">
+      MERGE INTO EMP A
+      USING DUAL
+      ON(A.EMP_NO = #{empNo})   
+      WHEN MATCHED THEN
+          UPDATE SET A.NM=#{nm}, A.ADDR=#{addr}, A.HP=#{hp}
+          , A.POST_NO=#{postNo}, A.ADDR2=#{addr2}
+          , A.PASSWORD=PKG_CRYPTO.ENCRYPT(#{password})
+      WHEN NOT MATCHED THEN 
+          INSERT(EMP_NO, NM, ADDR, HP, POST_NO, ADDR2, PASSWORD)
+          VALUES(
+              (SELECT NVL(MAX(TO_NUMBER(EMP_NO)),0)+1 FROM EMP)
+              ,#{nm},#{addr},#{hp},#{postNo},#{addr2}
+              ,PKG_CRYPTO.ENCRYPT(#{password})
+          )
+   </insert>
+   
+   <!-- 직원번호 자동생성 -->
+   <select id="createEmpNo" resultType="string">
+      SELECT NVL(MAX(TO_NUMBER(EMP_NO)),0)+1 FROM EMP
+   </select>
+   
+   <!-- 직원 정보 상세   -->
+   <select id="detail" parameterType="String" resultType="empVo" >
+      SELECT EMP_NO,NM,ADDR,HP,POST_NO,ADDR2
+          , PKG_CRYPTO.DECRYPT(PASSWORD) AS PASSWORD
+      FROM   EMP 
+      WHERE  EMP_NO = #{empNo} 
+   </select>
+   
+   <!-- 상품 정보 수정 -->
+   <update id="update" parameterType="String">
+      <![CDATA[
+      UPDATE EMP
+      SET FIRE_YN = 'Y'
+      WHERE EMP_NO = #{empNo}
+      ]]>
+   </update>
+   
+   <update id="processUpdate" parameterType="hashMap">
+       UPDATE PRODUCT
+       SET P_NAME=#{pname}, P_UNITPRICE=#{unitPrice},P_DESCRIPTION=#{description}, P_CATEGORY=#{category},
+           P_MANUFACTURER=#{manufacturer}, P_UNITSINSTOCK=#{unitsinstock}, P_CONDITION=#{condition}
+           <if test="filename!=null and filename!=''">
+           ,P_FILENAME=#{filename}
+           </if>
+       WHERE P_ID=#{productId}
+   </update>
+   
+   <!-- 상품 삭제 -->
+   <delete id="delete" parameterType="String">
+      DELETE FROM PRODUCT WHERE P_ID=#{id}
+   </delete>
+   
+   
 </mapper>

@@ -73,7 +73,7 @@
       <tr>
          <th><form:label path="cardList[0].validMonth">카드1-유효년월</form:label></th>
          <td><form:input type="month" path="cardList[0].validMonth"/> <font color="red"><form:errors path="cardList[0].validMonth"></form:errors></font></td>
-      </tr>z
+      </tr>
       <tr>
          <th><form:label path="cardList[1].no">카드2-번호</form:label></th>
          <td><form:input path="cardList[1].no"/> <font color="red"><form:errors path="cardList[1].no"></form:errors></font></td>

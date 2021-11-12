@@ -13,7 +13,7 @@
 </head>
 <body>
 	<tiles:insertAttribute name="header"/>
-		<div>
+		<div> 
 			<tiles:insertAttribute name="aside" />
 			<tiles:insertAttribute name="body" />
 		</div> 
