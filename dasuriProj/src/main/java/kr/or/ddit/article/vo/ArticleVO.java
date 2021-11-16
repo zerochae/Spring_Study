@@ -10,8 +10,8 @@ import lombok.Data;
 @Data
 public class ArticleVO {
 	
-	private int articleNo;
-	private WriterVO writerVo;
+	private int articleNo; 
+	private WriterVO writerVO;
 	@NotBlank
 	private String title;
 	private Date regdate;
@@ -24,9 +24,9 @@ public class ArticleVO {
 		
 	}
 	
-	public ArticleVO(int articleNo, WriterVO writerVo, String title, Date regdate, Date moddate, int readCnt) {
+	public ArticleVO(int articleNo, WriterVO writerVO, String title, Date regdate, Date moddate, int readCnt) {
 		this.articleNo = articleNo;
-		this.writerVo = writerVo;
+		this.writerVO = writerVO;
 		this.title = title;
 		this.regdate = regdate;
 		this.moddate = moddate;

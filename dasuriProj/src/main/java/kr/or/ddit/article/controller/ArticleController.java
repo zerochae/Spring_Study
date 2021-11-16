@@ -1,5 +1,13 @@
 package kr.or.ddit.article.controller;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,8 +20,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.article.service.ArticleService;
+import kr.or.ddit.article.vo.ArticleContentVO;
+import kr.or.ddit.article.vo.ArticlePage;
 import kr.or.ddit.article.vo.ArticleVO;
 import kr.or.ddit.article.vo.WriterVO;
 import kr.or.ddit.emp.vo.EmpVO;
@@ -32,7 +43,7 @@ public class ArticleController {
 		//forwarding
 		return "article/newArticleForm";
 	}
-	 
+	  
 	@PostMapping("/newArticlePost")
 	public String newArticlePost(@ModelAttribute("article") ArticleVO article, HttpServletRequest request) throws Exception {
 		
@@ -44,7 +55,7 @@ public class ArticleController {
 		WriterVO writerVO = new WriterVO(empVO.getEmpNo(),empVO.getNm());
 		
 		//article 객체의 작성자 중첩객체 필드로 setting을 함
-		article.setWriterVo(writerVO);
+		article.setWriterVO(writerVO);
 		
 		logger.info("newArticlePost" + article.toString());
 		
@@ -53,6 +64,49 @@ public class ArticleController {
 		logger.info("result : " + result);
 		
 		return "article/newArticleSuccess";
+	}
+	
+	
+	@GetMapping("/listArticle")
+	public String listArticle(Model model,
+			@RequestParam(value="currentPage",defaultValue = "1") String currentPage) throws Exception {
+		
+		List<Map<String,Object>> mapList = this.articleService.selectArticle();
+		
+//		int total = this.articleService.totalArticle();
+		int total = mapList.size();
+		 
+		List<ArticleVO> articleList = new ArrayList<>();
+		
+		if(mapList != null){
+			logger.info("mapList : " + mapList.get(0).toString());
+		}
+		
+		for (Map<String, Object> map : mapList) {
+				
+				WriterVO writerVO = new WriterVO(String.valueOf(map.get("WRITER_ID")),String.valueOf(map.get("WRITER_NAME")));
+				ArticleContentVO articleContentVO = new ArticleContentVO(Integer.parseInt(String.valueOf(map.get("ARTICLE_NO"))),String.valueOf(map.get("CONTENT")));
+				
+				ArticleVO articleVo = 
+						new ArticleVO(
+								Integer.parseInt((String.valueOf(map.get("ARTICLE_NO")))),
+								writerVO,
+								(String)map.get("TITLE"),
+								(Date)map.get("REGDATE"),
+								(Date)map.get("MODDATE"),
+								Integer.parseInt(String.valueOf(map.get("READ_CNT")))
+								);
+				
+//				logger.info("writerVo : " + writerVO);
+//				logger.info("articleContentVO : " + articleContentVO);
+//				logger.info("articleVo : " + articleVo);
+				
+				articleList.add(articleVo);
+			}
+		
+		model.addAttribute("articlePage",new ArticlePage(total,Integer.parseInt(currentPage),articleList,10));
+		
+		return "article/listArticle";
 	}
 
 	
