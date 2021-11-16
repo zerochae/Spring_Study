@@ -7,7 +7,7 @@
       <result column="P_DESCRIPTION" property="P_DESCRIPTION" 
          jdbcType="CLOB" javaType="java.lang.String" /> 
    </resultMap>
-   
+    
    <!-- 상품 목록 -->
    <select id="list" resultType="empVo">
       <![CDATA[
@@ -48,9 +48,13 @@
    <!-- 직원 정보 상세   -->
    <select id="detail" parameterType="String" resultType="empVo" >
       SELECT EMP_NO,NM,ADDR,HP,POST_NO,ADDR2
-          , PKG_CRYPTO.DECRYPT(PASSWORD) AS PASSWORD
+          , PASSWORD
       FROM   EMP 
       WHERE  EMP_NO = #{empNo} 
+<!--       SELECT EMP_NO,NM,ADDR,HP,POST_NO,ADDR2 -->
+<!--           , PKG_CRYPTO.DECRYPT(PASSWORD) AS PASSWORD -->
+<!--       FROM   EMP  -->
+<!--       WHERE  EMP_NO = #{empNo}  -->
    </select>
    
    <!-- 상품 정보 수정 -->

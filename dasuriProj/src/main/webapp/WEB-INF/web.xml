@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
-
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+   version="3.1">
 <!-- 
-	web.xml : tomcat서버의 설정.
-	multipartResolver : 스프링에서 업로드 처리 시 빈으로 등록해야 할 객체
-	servlet-context.xml : Web과 관련된 설정 파일
+web.xml : tomcat서버의 설정.
+MultipartResolver : 스프링에서 업로드 처리 시 빈으로 등록해야 할 객체
+servlet-context.xml : Web과 관련된 설정 파일
  -->
+   <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+   <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring/root-context.xml</param-value>
+   </context-param>
+   
+   <!-- Creates the Spring Container shared by all Servlets and Filters -->
+   <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
-	</context-param>
-	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<!-- Processes application requests -->
-	<servlet>
-		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-		<multipart-config>
-			<location>C:\\upload</location> <!-- 업로드 파일 저장 -->
-			<max-file-size>20971520</max-file-size> <!-- 업로드 파일 최대 크기 -->
-			<max-request-size>41943040</max-request-size> <!-- 한번에 최대 크기 -->
-			<file-size-threshold>20971520</file-size-threshold> <!-- 메모리크기 -->
-		</multipart-config>
-	</servlet>
-	
-		
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-	<filter>
+   <!-- Processes application requests -->
+   <servlet>
+      <servlet-name>appServlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+      </init-param>
+      <load-on-startup>1</load-on-startup>
+      
+      <multipart-config>
+         <location>C:\\upload</location><!-- 업로드 파일 저장 -->
+         <max-file-size>20971520</max-file-size><!-- 업로드 파일 최대 크기 -->
+         <max-request-size>41943040</max-request-size><!-- 한번의 최대 크기 -->
+         <file-size-threshold>20971520</file-size-threshold><!-- 메모리크기 -->
+      </multipart-config>
+   </servlet>
+      
+   <servlet-mapping>
+      <servlet-name>appServlet</servlet-name>
+      <url-pattern>/</url-pattern>
+   </servlet-mapping>
+<!-- 
+WEB-INF는 Web Information의 약자로 web에 관련된 정보를 의미한다. 
+브라우저에서 Context Root 하위의 정보에 대해 접근할 수 있지만 
+WEB-INF에는 접근할 수 없다. 
+브라우저에서 url로 jsp 파일 등을 직접 요청하는 경우를 제한하는 것이 보통이기 때문에 
+jsp 파일들은 실무에서는 WEB-INF 폴더 안에 있다고 보면 된다. 
+이와 반대로 브라우저가 반드시 참조해야 하는 css, 이미지(img), jQuery 등은 
+참조할 수 있도록 Context Root의 바로 하위에 static 폴더를 만들어 관리한다. 
+ -->   
+      
+   <filter>
       <filter-name>encodingFilter</filter-name>
       <filter-class>
          org.springframework.web.filter.CharacterEncodingFilter
@@ -61,5 +68,26 @@
       <filter-name>encodingFilter</filter-name>
       <url-pattern>/*</url-pattern>
    </filter-mapping>
-
+   
+   <filter>
+      <filter-name>LoginCheck</filter-name>
+      <filter-class>kr.or.ddit.filter.LoginCheckFilter</filter-class>
+   </filter> 
+   <filter-mapping>
+      <filter-name>LoginCheck</filter-name>
+      <url-pattern>/article/*</url-pattern>
+   </filter-mapping>
+   
+   <!-- 요청한 URL을 처리하기 위한 자원이 존재하지 않음(page note found) -->
+   <error-page>
+   <error-code>404</error-code>
+   <location>/error/error404</location>
+   </error-page>
+   
+   <!-- 서버 내부 오류가 발생함(jsp에서 exception) -->
+   <error-page>
+   <error-code>500</error-code>
+   <location>/error/error500</location>
+   </error-page> 
+   
 </web-app>

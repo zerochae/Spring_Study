@@ -18,12 +18,12 @@ public class EmpVO implements Serializable {
 	@NotBlank
 	private String hp;
 	@NotBlank
-	private String nm;
+	private String nm; 
 	@NotBlank
 	private String postNo;
 	
 	private String addr2;
-	
+	@NotBlank
 	private String password;
 	
 	private String fireYn; // 퇴직여부

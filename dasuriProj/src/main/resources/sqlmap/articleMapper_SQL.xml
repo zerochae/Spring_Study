@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.article.mapper.ArticleMapper">
+	<!-- article 테이블로 insert -->
+	<insert id="insertArticle" parameterType="articleVO">
+	<selectKey keyProperty="articleNo" order="BEFORE" resultType="int">
+	select nvl(max(article_no),0)+1 from article
+	</selectKey>
+	insert into article(article_no,writer_id,writer_name,title,regdate,moddate,read_cnt)
+	values(#{articleNo},#{writerId},#{writerName},#{title},SYSDATE,NULL,0)
+	</insert>
+	<insert id="insertArticleContent" parameterType="articleVO">
+	insert into article_content(article_no,content)
+	values(#{articleNo},#{content});
+	</insert>
+	<!-- article_content 테이블로 insert -->
+</mapper>

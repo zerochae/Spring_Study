@@ -8,6 +8,10 @@ public class WriterVO {
 	private String writerId;
 	private String writerName;
 	
+	public WriterVO() {
+		
+	}
+	 
 	public WriterVO(String writerId, String writerName) {
 		this.writerId = writerId;
 		this.writerName = writerName;

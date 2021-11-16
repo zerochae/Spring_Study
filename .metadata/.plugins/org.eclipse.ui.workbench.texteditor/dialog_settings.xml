@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="dataTable"/>
+		<item key="selection" value="form"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="form"/>
+			<item value="coll"/>
+			<item value="collap"/>
+			<item value="collapes"/>
 			<item value="dataTable"/>
 			<item value="dataTable_wrapper"/>
 			<item value="pagination"/>
@@ -19,10 +23,6 @@
 			<item value="&quot;js"/>
 			<item value="tbody"/>
 			<item value="sidebar"/>
-			<item value="footer"/>
-			<item value="&quot;img/"/>
-			<item value="img"/>
-			<item value="lombok"/>
 		</list>
 		<list key="replacehistory">
 			<item value="&quot;/resources/vendor"/>
@@ -38,7 +38,7 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="758"/>
-		<item key="DIALOG_Y_ORIGIN" value="748"/>
+		<item key="DIALOG_Y_ORIGIN" value="649"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
