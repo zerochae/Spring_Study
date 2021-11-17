@@ -57,7 +57,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">회원 게시판 : </h6>
-                <a class="collapse-item" href="/article/list">게시글목록</a>
+                <a class="collapse-item" href="/article/listArticle">게시글목록</a>
                 <a class="collapse-item" href="/article/newArticleForm">게시글작성</a>
             </div>
         </div>

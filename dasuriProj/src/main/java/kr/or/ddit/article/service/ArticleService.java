@@ -9,7 +9,7 @@ public interface ArticleService {
 	
 	public int insertArticle(ArticleVO articleVO) throws Exception;
 	
-	public List<Map<String,Object>> selectArticle() throws Exception;
+	public List<ArticleVO> selectArticle(Map<String,Object> map) throws Exception;
 	
 	public int totalArticle() throws Exception;
 	

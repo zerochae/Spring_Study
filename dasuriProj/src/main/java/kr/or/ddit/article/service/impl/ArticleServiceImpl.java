@@ -30,8 +30,8 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Map<String, Object>> selectArticle() throws Exception {
-		return this.articleMapper.selectArticle();
+	public List<ArticleVO> selectArticle(Map<String,Object> map) throws Exception {
+		return this.articleMapper.selectArticle(map);
 	}
 
 	@Override
