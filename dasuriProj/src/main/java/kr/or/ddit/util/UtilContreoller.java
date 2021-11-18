@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class UtilContreoller {
 
 	private static final Logger logger = LoggerFactory.getLogger(UtilContreoller.class);
-		
+		 
 	
 	@GetMapping("/chart/charts")
 	public ModelAndView charts(ModelAndView mav) {
@@ -22,17 +22,8 @@ public class UtilContreoller {
 		
 	}
 	
-	@GetMapping("/chart/chart01")
-	public String chart01() {
-		return "chart/chart01";
+	@GetMapping("/chart/chart02")
+	public String chart02() {
+		return "chart/chart02";
 	}
-	@GetMapping("/chart/chart01Multi")
-	public String chart01Multi() {
-		return "chart/chart01Multi";
-	}
-	@GetMapping("/chart/chart03")
-	public String chart03() {
-		return "chart/chart03";
-	}
-	
 }

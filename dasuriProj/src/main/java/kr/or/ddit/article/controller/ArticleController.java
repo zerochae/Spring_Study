@@ -1,13 +1,8 @@
 package kr.or.ddit.article.controller;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.article.service.ArticleService;
-import kr.or.ddit.article.vo.ArticleContentVO;
 import kr.or.ddit.article.vo.ArticlePage;
 import kr.or.ddit.article.vo.ArticleVO;
 import kr.or.ddit.article.vo.WriterVO;

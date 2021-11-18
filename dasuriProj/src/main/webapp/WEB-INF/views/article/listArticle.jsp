@@ -15,8 +15,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800"> 게시판 ㅋㅋ</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
+                    <p class="mb-4"> <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
 
                     <!-- DataTales Example -->
@@ -26,6 +25,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <button class="btn btn-primary btn-user" style="float: right">PDF 다운로드 </button>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
 										<tr>
@@ -75,5 +75,30 @@
                     </div>
                 </div>
                 <!-- /.container-fluid -->
+                
+                <script type="text/javascript">
+                	$(function(){
+                		const json = JSON.stringify("${articlePage.content}");
+                		console.log('json : ' + json );
+                	});
+                
+                function makeCkPdf(){
+                	
+                	var key1 = sessionStorage.setItem("key1",new Date());
+                	
+                	document.getElementById("div1").innerHTML = sessionStorage.getItem("keY1");
+                	
+                	$('#div1').text(key1);
+                	
+                	html2canvas($('#div0')[0]).then(function(cnavas){
+                		var doc = new jsPDF('1','px',[700,1000]);
+                		var imgDate = canvas.toDataURL('image/png');
+                		doc.addImage(imgData,'PNG',0,0);
+                	});
+                }
+                
+                </script>
+
+                
 </body>
 </html>
